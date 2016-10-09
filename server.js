@@ -12,7 +12,7 @@ app.disable('x-powered-by');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser')
 const morgan = require('morgan');
-//const clock = require('./clock');
+const clock = require('./clock');
 
 switch (app.get('env')) {
   case 'development':
