@@ -15,10 +15,12 @@
     "body-parser": "^1.15.2",
     "cookie-parser": "^1.4.3",
     "express": "^4.14.0",
+    "humps": "^1.1.0",
     "knex": "^0.12.3",
     "morgan": "^1.7.0",
     "path": "^0.12.7",
-    "pg": "^6.1.0"
+    "pg": "^6.1.0",
+    "request": "^2.75.0"
   },
   "engines": {
     "node": "6.5.0"
