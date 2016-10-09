@@ -27,5 +27,9 @@
   },
   "devDependencies": {
     "foreman": "^2.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SaralynOgden/learning-heroku-deployment.git"
   }
 }
