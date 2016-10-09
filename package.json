@@ -1,0 +1,29 @@
+{
+  "name": "testing-heroku-deployment",
+  "version": "1.0.0",
+  "description": "trying to get heroku deployment for Q2 project",
+  "main": "server.js",
+  "scripts": {
+    "knex": "knex",
+    "heroku-postbuild": "knex migrate:latest",
+    "nf": "nf start",
+    "nodemon": "nodemon server.js"
+  },
+  "author": "saralyn ogden <saralyn.ogden@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.14.0",
+    "knex": "^0.12.3",
+    "morgan": "^1.7.0",
+    "path": "^0.12.7",
+    "pg": "^6.1.0"
+  },
+  "engines": {
+    "node": "6.5.0"
+  },
+  "devDependencies": {
+    "foreman": "^2.0.0"
+  }
+}
