@@ -20,7 +20,6 @@ const getBusIndex = function(arrivalsAndDepartures, busNumber) {
 }
 
 module.exports = {
-  'use strict';
 
   start: function() {
      const bus = {
