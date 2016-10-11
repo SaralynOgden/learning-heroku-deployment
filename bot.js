@@ -20,63 +20,80 @@ const getBusIndex = function(arrivalsAndDepartures, busNumber) {
 }
 
 module.exports = {
-  // start: function() {
-  //   console.log('here');
-  // }
+  'use strict';
+
   start: function() {
+     const bus = {
+       busNumber: '12',
+       stopNumber: '75403',
+       scheduledTime: new Date(0),
+       actualTime: new Date(0)
+     };
 
-    const getJSON = function(url) {
-      const promise = new Promise((resolve, reject) => {
-        request.get(url, (err, res, body) => {
-          if (err) {
-            return reject(err);
-          }
+     knex('buses')
+       .insert(decamelizeKeys(bus), '*')
+       .then((bus) => console.log(bus))
+       .catch((err) => next(err));
+   }
 
-          resolve(JSON.parse(body));
-        });
-      });
 
-      return promise;
-    };
-
-    getJSON('http://api.pugetsound.onebusaway.org/api/where/arrivals-and-departures-for-stop/1_75403.json?key=TEST')
-      .then((body) => {
-        const busNumber = '67';
-        const arrivalsAndDepartures = body.data.entry.arrivalsAndDepartures;
-        const busIndex = getBusIndex(arrivalsAndDepartures, busNumber);
-        const busInfo = body.data.entry.arrivalsAndDepartures[busIndex];
-        const predictedArrivalTime = busInfo.predictedArrivalTime;
-        const scheduledArrivalTime = busInfo.scheduledArrivalTime;
-        const lastUpdateTime = busInfo.lastUpdateTime;
-        const timeDifference = getTimeDifference(lastUpdateTime,
-                                    predictedArrivalTime, scheduledArrivalTime);
-        const scheduledTime = new Date(scheduledArrivalTime);
-        const actualTime = new Date(predictedArrivalTime);
-
-        if (timeDifference > 0) {
-          console.log(`${timeDifference} minutes late`);
-        } else if (timeDifference < 0) {
-          console.log(`${Math.abs(timeDifference)} minutes early`);
-        } else {
-          console.log('Miracle! Bus is on time!');
-        }
-        console.log(busIndex);
-
-        const bus = {
-          busNumber,
-          stopNumber: '75403',
-          scheduledTime,
-          actualTime};
-
-        knex('buses')
-          .insert(decamelizeKeys(bus), '*')
-          .then((bus) => console.log(bus))
-          .catch((err) => next(err));
-      })
-      .catch((err) => {
-        console.log('here');
-        console.error(err);
-        process.exit(1);
-      });
+  // start: function() {
+  //   const time = new Date();
+  //   console.log(time);
+  // }
+  // start: function() {
+  //
+  //   const getJSON = function(url) {
+  //     const promise = new Promise((resolve, reject) => {
+  //       request.get(url, (err, res, body) => {
+  //         if (err) {
+  //           return reject(err);
+  //         }
+  //
+  //         resolve(JSON.parse(body));
+  //       });
+  //     });
+  //
+  //     return promise;
+  //   };
+  //
+  //   getJSON('http://api.pugetsound.onebusaway.org/api/where/arrivals-and-departures-for-stop/1_75403.json?key=TEST')
+  //     .then((body) => {
+  //       const busNumber = '372E';
+  //       const arrivalsAndDepartures = body.data.entry.arrivalsAndDepartures;
+  //       const busIndex = getBusIndex(arrivalsAndDepartures, busNumber);
+  //       const busInfo = body.data.entry.arrivalsAndDepartures[busIndex];
+  //       const predictedArrivalTime = busInfo.predictedArrivalTime;
+  //       const scheduledArrivalTime = busInfo.scheduledArrivalTime;
+  //       const lastUpdateTime = busInfo.lastUpdateTime;
+  //       const timeDifference = getTimeDifference(lastUpdateTime,
+  //                                   predictedArrivalTime, scheduledArrivalTime);
+  //       const scheduledTime = new Date(scheduledArrivalTime);
+  //       const actualTime = new Date(predictedArrivalTime);
+  //       if (timeDifference > 0) {
+  //         console.log(`${timeDifference} minutes late`);
+  //       } else if (timeDifference < 0) {
+  //         console.log(`${Math.abs(timeDifference)} minutes early`);
+  //       } else {
+  //         console.log('Miracle! Bus is on time!');
+  //       }
+  //       console.log(busIndex);
+  //
+  //       const bus = {
+  //         busNumber,
+  //         stopNumber: '75403',
+  //         scheduledTime,
+  //         actualTime};
+  //
+  //       knex('buses')
+  //         .insert(decamelizeKeys(bus), '*')
+  //         .then((bus) => console.log(bus))
+  //         .catch((err) => next(err));
+  //     })
+  //     .catch((err) => {
+  //       console.log('here');
+  //       console.error(err);
+  //       process.exit(1);
+  //     });
   }
 };
