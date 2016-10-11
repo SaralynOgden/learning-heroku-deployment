@@ -2,7 +2,7 @@ const CronJob = require('cron').CronJob;
 const bot = require('./bot.js');
 const http = require("http");
 
-new CronJob('00 */01 * * * *',
+new CronJob('*/30 * * * * *',
   bot.start,
   null,
   true,

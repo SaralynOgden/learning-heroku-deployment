@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.2",
+    "boom": "^4.1.0",
     "cookie-parser": "^1.4.3",
     "cron": "^1.1.1",
     "express": "^4.14.0",
