@@ -94,5 +94,5 @@ module.exports = {
   //       console.error(err);
   //       process.exit(1);
   //     });
-  }
+  // }
 };
