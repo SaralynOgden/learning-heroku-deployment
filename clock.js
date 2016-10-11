@@ -8,6 +8,6 @@ new CronJob('*/01 * * * * *',
   true,
   'America/Los_Angeles');
 
-setInterval(function() {
-  http.get("http://chase.herokuapp.com");
-}, 300000);
+// setInterval(function() {
+//   http.get("http://chase.herokuapp.com");
+// }, 300000);
