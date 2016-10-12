@@ -56,14 +56,13 @@ module.exports = {
             stopNumber: '75403',
             scheduledTime: new Date(busInfo.scheduledArrivalTime),
             actualTime: new Date(busInfo.predictedArrivalTime),
-            lastUpdateTime: busInfo.lastUpdateTime,
-            distanceFromStop: ParseInt(busInfo.distanceFromStop)};
+            lastUpdateTime: new Date(busInfo.lastUpdateTime),
+            distance: parseInt(busInfo.distanceFromStop)};
 
           knex('buses')
             .insert(decamelizeKeys(bus), '*')
             .then((bus) => console.log(bus))
-            .catch((err) => throw boom.create(
-              500, 'buses could not be inserted'));
+            .catch((err) => console.error(err));
         }
       })
       .catch((err) => {
