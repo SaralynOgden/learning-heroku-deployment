@@ -6,15 +6,6 @@ const { decamelizeKeys } = require('humps');
 const boom = require('boom');
 // bf764a2e-308a-43f5-9fdc-24a6e6447ae0
 
-const getTimeDifference = function(lastUpdateTime,
-                                  predictedArrivalTime, scheduledArrivalTime) {
-  if (!predictedArrivalTime) {
-    return (lastUpdateTime - scheduledArrivalTime) / (60 * 1000);
-  } else {
-    return (predictedArrivalTime - scheduledArrivalTime) / (60 * 1000);
-  }
-}
-
 const getBusIndices = function(arrivalsAndDepartures, busNumber) {
   const busesWithNumber = [];
 
